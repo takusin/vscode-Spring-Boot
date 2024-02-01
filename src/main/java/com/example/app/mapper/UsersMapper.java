@@ -10,7 +10,5 @@ public interface UsersMapper {
     
     //ユーザー追加
     void addUser(Users user);
-
-    //ユーザー検索(ID)
-    Users selectById(int id);
+    
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
     @GetMapping("/login")
     public String login() {
-        // model.addAttribute("userInfo", new UserInfo());
         return "login";
     }
 

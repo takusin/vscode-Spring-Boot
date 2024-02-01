@@ -10,11 +10,11 @@
     <form th:action="@{/register}" method="post">
         <div>
             <p>名前</p>
-            <input type="text" id="name" required>
+            <input type="text" id="name" name="username" required>
         </div>
         <div>
             <p>パスワード</p>
-            <input type="password" id="password" required>
+            <input type="password" id="password" name="password" required>
         </div>
         <div>
             <button type="submit">登録</button>

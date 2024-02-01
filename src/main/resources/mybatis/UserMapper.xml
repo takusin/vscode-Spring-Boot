@@ -2,8 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.mapper.UsersMapper">
     <!-- ユーザー登録 -->
-    <insert id="addUser" parameterType="com.example.app.mapper.UserInfoMapper">
+    <insert id="addUser" parameterType="com.example.app.domain.Users" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO users (name)
         VALUES (#{name})
     </insert>
+
+    <!-- 名前からidを取得
+    <select id="selectById" parameterType="com.example.app.domain.Users" resultType="int">
+        SELECT id FROM users WHERE name = #{name}
+    </select> -->
 </mapper>
