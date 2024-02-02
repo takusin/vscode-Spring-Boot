@@ -8,4 +8,7 @@ import com.example.app.domain.User;
 public interface PasswordMapper {
     //パスワード追加
     void addPassword(User user);
+
+    //パスワード検索
+    String selectById(int userId);
 }

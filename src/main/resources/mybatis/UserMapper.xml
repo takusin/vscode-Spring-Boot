@@ -7,4 +7,9 @@
         VALUES (#{userName})
     </insert>
 
+    <select id="selectByName" parameterType="string" resultType="int">
+        SELECT id FROM users
+        WHERE name = #{userName}
+    </select>
+
 </mapper>
