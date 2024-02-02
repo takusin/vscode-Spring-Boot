@@ -8,14 +8,14 @@
 </head>
 <body>
     <h1>ログイン</h1>
-    <form action="/myPage" method="post">
+    <form action="/myPage" method="post" th:object="${user}">
         <div>
             <label for="username">ユーザー名:</label>
-            <input type="text" id="username" name="username" required="required">
+            <input type="text" id="username" th:field="*{userName}" required="required">
         </div>
         <div>
             <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" required="required">
+            <input type="password" id="password" th:field="*{userPassword}" required="required">
         </div>
         <div>
             <button type="submit">ログイン</button>
