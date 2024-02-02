@@ -2,8 +2,7 @@ package com.example.app.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.app.domain.Password;
-import com.example.app.domain.Users;
+import com.example.app.domain.User;
 import com.example.app.mapper.PasswordMapper;
 import com.example.app.mapper.UsersMapper;
 
@@ -16,18 +15,16 @@ public class UserService {
     private final UsersMapper usersMapper;
     private final PasswordMapper passwordMapper;
 
-    public void registerUser(String userName, String passwordStr){
-        Users users = new Users();
-        users.setName(userName);
-        usersMapper.addUser(users);
+    public void registerUser(User user){
+        //ユーザーテーブルに追加
+        usersMapper.addUser(user);
 
-        Password password = new Password();
-        password.setPassword(passwordStr);
-        password.setUserId(users.getId()); //addUserでセットしたID
-        passwordMapper.addPassword(password);
+        //パスワードテーブルに追加
+        user.setId(user.getId()); //addUserでセットしたID
+        passwordMapper.addPassword(user);
     }
 
-    public boolean canUserLogin(String userName, String passwordStr){
+    public boolean canUserLogin(User user){
         return false;
     }
 }
