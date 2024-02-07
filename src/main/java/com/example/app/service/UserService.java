@@ -15,6 +15,7 @@ public class UserService {
     private final UsersMapper usersMapper;
     private final PasswordMapper passwordMapper;
 
+    //ユーザー登録
     public void registerUser(User user){
         //ユーザーテーブルに追加
         usersMapper.addUser(user);
@@ -28,6 +29,10 @@ public class UserService {
     public boolean canUserLogin(User user){
         //ユーザーネームからID、パスワードを取得
         Integer userId = usersMapper.selectByName(user.getUserName());
+        if(userId == null){
+            return false;
+        }
+
         String password = passwordMapper.selectById(userId);
 
         //DBから取得したパスワードと入力フォームのパスワードを比較
