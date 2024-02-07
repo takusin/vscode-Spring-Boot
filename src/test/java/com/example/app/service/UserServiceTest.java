@@ -22,7 +22,7 @@ public class UserServiceTest {
     @Test
     public void testUserIdAndPassword(){
         //検索するユーザー名
-        String userName = "test8";
+        String userName = "test7";
 
         //ID検索
         Integer userId = usersMapper.selectByName(userName);
