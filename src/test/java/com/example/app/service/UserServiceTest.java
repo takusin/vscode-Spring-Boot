@@ -12,8 +12,6 @@ import com.example.app.mapper.UsersMapper;
 
 @SpringBootTest
 public class UserServiceTest {
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private UsersMapper usersMapper;
@@ -29,12 +27,12 @@ public class UserServiceTest {
         //ID検索
         Integer userId = usersMapper.selectByName(userName);
         assertNotNull(userId, "null : DBに存在しません");
-        System.out.println("result" + userId);
+        System.out.println("result : " + userId);
 
         //パスワード検索
         String password = passwordMapper.selectById(userId);
         assertNotNull(password, "パスワードがnull : DBに存在しません");
-        System.out.println("result" + password);
+        System.out.println("result : " + password);
 
         //検証
         assertTrue(password.length() > 0, "password is null");

@@ -25,6 +25,12 @@ public class UserService {
     }
 
     public boolean canUserLogin(User user){
+        Integer userId = usersMapper.selectByName(user.getUserName());
+        String password = passwordMapper.selectById(userId);
+
+        if(password.equals(user.getUserPassword())){
+            return true;
+        }
         return false;
     }
 }

@@ -25,7 +25,10 @@ public class LoginController {
 
     @PostMapping("/myPage")
     public String processLogin(@ModelAttribute("user") User user) {
-
+        boolean pass = userService.canUserLogin(user);
+        if(!pass){
+            return "redirect:/login";
+        }
         return "myPage";
     }
 
