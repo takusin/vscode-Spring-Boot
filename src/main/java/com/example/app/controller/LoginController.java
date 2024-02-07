@@ -25,8 +25,10 @@ public class LoginController {
 
     @PostMapping("/myPage")
     public String processLogin(@ModelAttribute("user") User user) {
+        //サービスクラスのログイン処理の結果を格納
         boolean pass = userService.canUserLogin(user);
         if(!pass){
+            //失敗ならログイン画面にリダイレクト
             return "redirect:/login";
         }
         return "myPage";
