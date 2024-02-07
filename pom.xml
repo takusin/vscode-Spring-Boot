@@ -35,6 +35,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -74,6 +75,13 @@
 			<version>0.4.3</version>
 		</dependency>
 
+		<!-- JUnit Jupiter (JUnit 5) の依存関係 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
