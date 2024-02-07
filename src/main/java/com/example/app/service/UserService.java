@@ -15,6 +15,7 @@ public class UserService {
     private final UsersMapper usersMapper;
     private final PasswordMapper passwordMapper;
 
+    //ユーザー登録
     public void registerUser(User user){
         //ユーザーテーブルに追加
         usersMapper.addUser(user);
