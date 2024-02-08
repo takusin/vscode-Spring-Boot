@@ -29,7 +29,14 @@ public class UserServiceImpl implements UserService{
     public boolean canUserLogin(User user){
         //ユーザーネームからID、パスワードを取得
         Integer userId = usersMapper.selectByName(user.getUserName());
+        if(userId == null){
+            return false;
+        }
+
         String password = passwordMapper.selectById(userId);
+        if(password == null || password.isEmpty()){
+            return false;
+        }
 
         //DBから取得したパスワードと入力フォームのパスワードを比較
         if(password.equals(user.getUserPassword())){
