@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.app.domain.User;
-import com.example.app.service.UserService;
+import com.example.app.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegisterController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @GetMapping("register")
     public String register(Model model) {

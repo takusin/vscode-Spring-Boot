@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.app.domain.User;
-import com.example.app.service.UserService;
+import com.example.app.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LoginController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @GetMapping("/login")
     public String login(Model model) {
