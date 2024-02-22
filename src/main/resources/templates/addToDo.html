@@ -9,7 +9,11 @@
 <body>
 
 <form th:action="@{/addTodo}" method="post">
-    
+
+    <input type="text" name="title" placeholder="タイトル"/>
+
+    <input type="hidden" name="userId" th:value="${userId}" />
+
     <textarea id="markdown-editor" name="description"></textarea>
     <button type="submit">送信</button>
 </form>
