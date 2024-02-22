@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.TodosMapper">
+
+    <!-- todos テーブルへのデータ挿入 -->
+    <insert id="insertTodo" parameterType="com.example.app.domain.Todo">
+        INSERT INTO todos (user_id, title, description, status, created_at, updated_at)
+        VALUES (#{userId}, #{title}, #{description}, #{status}, NOW(), NOW())
+    </insert>
+
+</mapper>
