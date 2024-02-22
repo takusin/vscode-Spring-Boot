@@ -8,16 +8,16 @@
 </head>
 <body>
 
-<form th:action="@{/addTodo}" method="post">
+<form th:action="@{/addTodo}" th:object="${todo}" method="post">
 
-    <input type="text" name="title" placeholder="タイトル"/>
+    <input type="text" th:field="*{title}" placeholder="タイトル"/>
 
     <input type="hidden" name="userId" th:value="${userId}" />
 
     <!-- デバッグ用: userIdの値を表示 -->
     <p th:text="'userId: ' + ${userId}"></p>
 
-    <textarea id="markdown-editor" name="description"></textarea>
+    <textarea th:field="*{description}" id="markdown-editor" placeholder="説明"></textarea>
     <button type="submit">送信</button>
 </form>
 
