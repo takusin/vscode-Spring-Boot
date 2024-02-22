@@ -14,6 +14,9 @@
 
     <input type="hidden" name="userId" th:value="${userId}" />
 
+    <!-- デバッグ用: userIdの値を表示 -->
+    <p th:text="'userId: ' + ${userId}"></p>
+
     <textarea id="markdown-editor" name="description"></textarea>
     <button type="submit">送信</button>
 </form>

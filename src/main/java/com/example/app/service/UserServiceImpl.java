@@ -40,6 +40,8 @@ public class UserServiceImpl implements UserService{
 
         //DBから取得したパスワードと入力フォームのパスワードを比較
         if(password.equals(user.getUserPassword())){
+            // ログイン成功時にユーザーIDをUserオブジェクトにセット
+            user.setId(userId); // この行を追加
             return true;
         }
         return false;

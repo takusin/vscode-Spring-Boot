@@ -13,6 +13,8 @@ import com.example.app.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
+
+
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
@@ -44,5 +46,11 @@ public class LoginController {
         }
         
     }
+
+    @GetMapping("/myPage")
+    public String myPage() {
+        return "myPage";
+    }
+    
 
 }
