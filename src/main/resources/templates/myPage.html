@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>todoリスト一覧</h1>
+    <div th:if="${todos.isEmpty()}">
+        ToDoリストが空です。
+    </div>
+    <div>
+        <ul>
+            <!-- ToDoリストの各項目を表示 -->
+            <li th:each="todo : ${todos}">
+                <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.title}">タイトル</a>
+            </li>
+        </ul>
+    </div>
     <a th:href="@{/addTodo}">作成</a>
 </body>
 </html>

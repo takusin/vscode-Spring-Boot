@@ -1,5 +1,7 @@
 package com.example.app.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.app.domain.Todo;
 import com.example.app.domain.User;
+import com.example.app.service.TodoService;
 import com.example.app.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +24,8 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
 
     private final UserService userService;
+
+    private final TodoService todoService;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -48,7 +54,16 @@ public class LoginController {
     }
 
     @GetMapping("/myPage")
-    public String myPage() {
+    public String myPage(Model model, HttpSession session) {
+        // セッションからユーザーIDを取得
+        Integer userId = (Integer) session.getAttribute("userId");
+
+        // ユーザーIDをもとにToDoタイトルリストを取得
+        List<Todo> todos = todoService.findTitlesByUserId(userId);
+
+        // モデルにToDoリストを追加
+        model.addAttribute("todos", todos);
+
         return "myPage";
     }
     
