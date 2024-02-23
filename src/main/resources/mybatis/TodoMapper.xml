@@ -8,4 +8,16 @@
         VALUES (#{userId}, #{title}, #{description}, NOW(), NOW())
     </insert>
 
+    <!-- ユーザーIDに基づいてTodoのタイトルを全件取得 -->
+    <select id="findTitlesByUserId" resultType="com.example.app.domain.Todo">
+        SELECT id, title FROM todos WHERE user_id = #{userId}
+    </select>
+
+    <!-- IDに基づいてTodoの詳細を取得 -->
+    <select id="findById" parameterType="int" resultType="com.example.app.domain.Todo">
+        SELECT id, title, description, status, created_at, updated_at
+        FROM todos
+        WHERE id = #{id}
+    </select>
+    
 </mapper>
