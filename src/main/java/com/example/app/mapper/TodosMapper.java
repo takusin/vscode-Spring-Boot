@@ -15,4 +15,7 @@ public interface TodosMapper {
 
     // ユーザーIDに基づいてTodoのタイトルを全件取得
     List<Todo> findTitlesByUserId(@Param("userId") Integer userId);
+
+    // idに基づいてtodoの内容を取得
+    Todo findById(@Param("id") Integer id);
 } 
