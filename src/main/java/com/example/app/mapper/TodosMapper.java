@@ -14,5 +14,5 @@ public interface TodosMapper {
     void insertTodo(Todo todo);
 
     // ユーザーIDに基づいてTodoのタイトルを全件取得
-    List<String> findTitlesByUserId(@Param("userId") Integer userId);
+    List<Todo> findTitlesByUserId(@Param("userId") Integer userId);
 } 
