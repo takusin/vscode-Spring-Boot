@@ -4,8 +4,8 @@
 
     <!-- todos テーブルへのデータ挿入 -->
     <insert id="insertTodo" parameterType="com.example.app.domain.Todo">
-        INSERT INTO todos (user_id, title, description, status, created_at, updated_at)
-        VALUES (#{userId}, #{title}, #{description}, #{status}, NOW(), NOW())
+        INSERT INTO todos (user_id, title, description, created_at, updated_at)
+        VALUES (#{userId}, #{title}, #{description}, NOW(), NOW())
     </insert>
 
 </mapper>

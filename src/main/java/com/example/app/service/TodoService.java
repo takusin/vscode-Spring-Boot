@@ -4,5 +4,5 @@ import com.example.app.domain.Todo;
 
 public interface TodoService {
     // ToDoアイテムを追加するメソッド
-    void addTodo(Todo todo);
+    void addTodo(Todo todo, Integer userId);
 }

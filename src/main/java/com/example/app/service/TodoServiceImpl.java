@@ -13,7 +13,8 @@ public class TodoServiceImpl implements TodoService{
     private final TodosMapper todosMapper;
 
     @Override
-    public void addTodo(Todo todo) {
+    public void addTodo(Todo todo, Integer userId) {
+        todo.setUserId(userId);
         todosMapper.insertTodo(todo);
     }
 }
