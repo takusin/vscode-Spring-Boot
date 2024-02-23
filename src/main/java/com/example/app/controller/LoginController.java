@@ -10,7 +10,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.app.domain.User;
 import com.example.app.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+
+
 
 @Controller
 @RequiredArgsConstructor
@@ -29,15 +32,25 @@ public class LoginController {
     }
 
     @PostMapping("/myPage")
-    public String processLogin(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
+    public String processLogin(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes, HttpSession session) {
         //サービスクラスのログイン処理の結果を格納
         boolean pass = userService.canUserLogin(user);
         if(!pass){
             //失敗ならログイン画面にリダイレクト
             redirectAttributes.addFlashAttribute("loginError", "ユーザーネームかパスワードが違います");
             return "redirect:/login";
+        } else {
+            // ログイン成功時にユーザーIDをセッションに格納
+            session.setAttribute("userId", user.getId());
+            return "redirect:/myPage";
         }
+        
+    }
+
+    @GetMapping("/myPage")
+    public String myPage() {
         return "myPage";
     }
+    
 
 }

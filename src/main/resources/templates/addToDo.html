@@ -8,9 +8,14 @@
 </head>
 <body>
 
-<form th:action="@{/addTodo}" method="post">
-    
-    <textarea id="markdown-editor" name="description"></textarea>
+<form th:action="@{/addTodo}" th:object="${todo}" method="post">
+
+    <input type="text" th:field="*{title}" placeholder="タイトル"/>
+
+    <!-- デバッグ用: userIdの値を表示 -->
+    <p th:text="'userId: ' + ${userId}"></p>
+
+    <textarea th:field="*{description}" id="markdown-editor" placeholder="説明"></textarea>
     <button type="submit">送信</button>
 </form>
 
