@@ -48,5 +48,10 @@
         WHERE id = #{id}
     </update>
 
+    <!-- IDに基づいてTodoを削除 -->
+    <delete id="deleteTodoById" parameterType="int">
+        DELETE FROM todos WHERE id = #{id}
+    </delete>
+
     
 </mapper>
