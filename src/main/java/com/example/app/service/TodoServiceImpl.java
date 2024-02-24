@@ -31,8 +31,17 @@ public class TodoServiceImpl implements TodoService{
         return todosMapper.findById(id);
     }
 
+    @Override
     public void editTodo(Todo todo){
         todosMapper.updateTodo(todo);
+    }
+
+    @Override
+    public void updateTodoStatus(Integer id, Integer status) {
+        Todo todo = new Todo();
+        todo.setId(id);
+        todo.setStatus(status);
+        todosMapper.updateTodoStatus(todo); // マッパーのupdateTodoStatusメソッドを呼び出し
     }
 
 }

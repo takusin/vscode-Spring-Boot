@@ -19,6 +19,13 @@
     <!-- 例: ToDoの詳細ページまたは一覧ページ内に編集リンクを追加 -->
     <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="edit-button">編集</a>
 
+    <form th:action="@{/todo/status/{id}(id=${todo.id})}" method="post">
+        <input type="hidden" name="status" th:value="${todo.status == 0 ? 1 : 0}" />
+        <button type="submit" class="status-update-button">
+            <span th:text="${todo.status == 0 ? '完了にする' : '未完了にする'}">ステータス更新</span>
+        </button>
+    </form>
+    
 
     <a th:href="@{/myPage}">マイページに戻る</a>
 </body>

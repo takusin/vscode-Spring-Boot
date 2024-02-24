@@ -74,4 +74,16 @@ public class ToDoController {
         return "redirect:/todo/" + id; // ToDo詳細画面にリダイレクト
     }
     
+    @PostMapping("/todo/status/{id}")
+    public String updateTodoStatus(
+        @PathVariable("id") Integer id, 
+        @ModelAttribute("status") Integer status, 
+        RedirectAttributes redirectAttributes) {
+
+        todoService.updateTodoStatus(id, status); // ステータスを更新
+        redirectAttributes.addFlashAttribute("successMessage", "ToDoのステータスが更新されました。");
+        return "redirect:/todo/" + id; // ToDo詳細画面にリダイレクト
+        
+    }
+
 }

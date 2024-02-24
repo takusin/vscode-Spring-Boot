@@ -29,5 +29,13 @@
         WHERE id = #{id}
     </update>
 
+    <!-- IDに基づいてTodoのstatusを変更 -->
+    <update id="updateTodoStatus" parameterType="com.example.app.domain.Todo">
+        UPDATE todos
+        SET status = #{status},
+            updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
     
 </mapper>
