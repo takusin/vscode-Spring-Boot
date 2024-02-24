@@ -15,6 +15,11 @@
         <p>作成日: <span th:text="${todo.createdAt}">作成日</span></p>
         <p>更新日: <span th:text="${todo.updatedAt}">更新日</span></p>
     </div>
+
+    <!-- 例: ToDoの詳細ページまたは一覧ページ内に編集リンクを追加 -->
+    <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="edit-button">編集</a>
+
+
     <a th:href="@{/myPage}">マイページに戻る</a>
 </body>
 </html>

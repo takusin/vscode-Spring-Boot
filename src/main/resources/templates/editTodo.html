@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+</head>
+<body>
+    <form th:action="@{/edit/{id}(id=${todo.id})}" th:object="${todo}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{title}" placeholder="タイトル"/>
+        <textarea th:field="*{description}" id="markdown-editor"></textarea>
+        <button type="submit">更新</button>
+    </form>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener('DOMContentLoaded', function() {
+            var simplemde = new SimpleMDE({ element: document.getElementById("markdown-editor") });
+            // コントローラーから渡されたtodo.descriptionをMarkdownエディタの初期値として設定
+            var todoDescription = /*[[${todo.description}]]*/ 'default value';
+            simplemde.value(todoDescription);
+        });
+        /*]]>*/
+    </script>
+    
+</body>
+</html>

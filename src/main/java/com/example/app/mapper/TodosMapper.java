@@ -10,7 +10,7 @@ import com.example.app.domain.Todo;
 @Mapper
 public interface TodosMapper {
     
-    //todoリスト追加
+    // todoリスト追加
     void insertTodo(Todo todo);
 
     // ユーザーIDに基づいてTodoのタイトルを全件取得
@@ -18,4 +18,8 @@ public interface TodosMapper {
 
     // idに基づいてtodoの内容を取得
     Todo findById(@Param("id") Integer id);
+
+    // idに基づいてtodoの内容を変更
+    void updateTodo(Todo todo);
+
 } 
