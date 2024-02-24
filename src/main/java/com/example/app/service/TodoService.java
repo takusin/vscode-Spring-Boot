@@ -17,4 +17,6 @@ public interface TodoService {
     // ToDoアイテムを更新するメソッドの追加
     void editTodo(Todo todo);
 
+    // ステータス更新メソッドの追加
+    void updateTodoStatus(Integer id, Integer status); 
 }
