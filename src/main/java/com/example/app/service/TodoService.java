@@ -11,6 +11,12 @@ public interface TodoService {
     // ユーザーIDに基づいてTodoのタイトルとIDを全件取得
     List<Todo> findTitlesByUserId(Integer userId);
 
+    // ユーザーIDに基づいて未完了（status=0）のTodoのタイトルを取得
+    List<Todo> findUncompletedTitlesByUserId(Integer userId);
+
+    // ユーザーIDに基づいて完了（status=1）のTodoのタイトルを取得
+    List<Todo> findCompletedTitlesByUserId(Integer userId);
+
     // TodoのIDに基づいてTodoの詳細情報を取得
     Todo findById(Integer id);
 
