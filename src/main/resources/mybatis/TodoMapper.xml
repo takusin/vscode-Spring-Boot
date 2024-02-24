@@ -19,5 +19,15 @@
         FROM todos
         WHERE id = #{id}
     </select>
+
+    <!-- idに基づいてtodoの内容を変更 -->
+    <update id="updateTodo" parameterType="com.example.app.domain.Todo">
+        UPDATE todos
+        SET title = #{title},
+            description = #{description},
+            updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
     
 </mapper>
