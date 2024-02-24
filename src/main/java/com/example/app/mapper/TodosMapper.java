@@ -22,4 +22,6 @@ public interface TodosMapper {
     // idに基づいてtodoの内容を変更
     void updateTodo(Todo todo);
 
+    void updateTodoStatus(Todo todo);
+
 } 
