@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.app.domain.Todo;
 import com.example.app.service.MarkdownService;
@@ -56,6 +57,21 @@ public class ToDoController {
 
         // ToDo詳細ページに遷移
         return "todoDetail";
+    }
+
+    @GetMapping("/todo/edit/{id}")
+    public String showEditTodoForm(@PathVariable("id") Integer id, Model model) {
+        Todo todo = todoService.findById(id);
+        model.addAttribute("todo", todo);
+        return "editTodo";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateTodo(@PathVariable("id") Integer id, Todo todo, RedirectAttributes redirectAttributes) {
+        todo.setId(id); // URLから取得したidをセット
+        todoService.editTodo(todo); // 編集内容を更新
+        redirectAttributes.addFlashAttribute("successMessage", "ToDoが更新されました。");
+        return "redirect:/todo/" + id; // ToDo詳細画面にリダイレクト
     }
     
 }
