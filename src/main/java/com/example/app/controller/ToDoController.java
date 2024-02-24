@@ -86,4 +86,10 @@ public class ToDoController {
         
     }
 
+    @PostMapping("/todo/delete/{id}")
+    public String deleteTodo(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
+        todoService.deleteTodoById(id);
+        redirectAttributes.addFlashAttribute("successMessage", "ToDoが正常に削除されました。");
+        return "redirect:/myPage";
+    }
 }

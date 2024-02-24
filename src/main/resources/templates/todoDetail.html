@@ -26,6 +26,10 @@
         </button>
     </form>
     
+    <!-- ToDoの削除リンク -->
+    <form th:action="@{/todo/delete/{id}(id=${todo.id})}" method="post">
+        <button type="submit" class="delete-button">削除</button>
+    </form>
 
     <a th:href="@{/myPage}">マイページに戻る</a>
 </body>
