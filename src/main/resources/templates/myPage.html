@@ -6,18 +6,37 @@
     <title>マイページ</title>
 </head>
 <body>
-    <h1>todoリスト一覧</h1>
-    <div th:if="${todos.isEmpty()}">
+    <h1>ToDoリスト一覧</h1>
+    <div th:if="${uncompleteds.isEmpty()} and ${completeds.isEmpty()}">
         ToDoリストが空です。
     </div>
-    <div>
+    
+    <h2>未完了のToDo</h2>
+    <div th:if="${!uncompleteds.isEmpty()}">
         <ul>
-            <!-- ToDoリストの各項目を表示 -->
-            <li th:each="todo : ${todos}">
+            <!-- 未完了ToDoリストの各項目を表示 -->
+            <li th:each="todo : ${uncompleteds}">
                 <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.title}">タイトル</a>
             </li>
         </ul>
     </div>
+    <div th:if="${uncompleteds.isEmpty()}">
+        未完了のToDoはありません。
+    </div>
+    
+    <h2>完了したToDo</h2>
+    <div th:if="${!completeds.isEmpty()}">
+        <ul>
+            <!-- 完了ToDoリストの各項目を表示 -->
+            <li th:each="todo : ${completeds}">
+                <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.title}">タイトル</a>
+            </li>
+        </ul>
+    </div>
+    <div th:if="${completeds.isEmpty()}">
+        完了したToDoはありません。
+    </div>
+    
     <a th:href="@{/addTodo}">作成</a>
 </body>
 </html>
