@@ -59,10 +59,12 @@ public class LoginController {
         Integer userId = (Integer) session.getAttribute("userId");
 
         // ユーザーIDをもとにToDoタイトルリストを取得
-        List<Todo> todos = todoService.findTitlesByUserId(userId);
+        List<Todo> uncompleteds = todoService.findUncompletedTitlesByUserId(userId); // 未完了リスト
+        List<Todo> completeds = todoService.findCompletedTitlesByUserId(userId); // 完了リスト
 
         // モデルにToDoリストを追加
-        model.addAttribute("todos", todos);
+        model.addAttribute("uncompleteds", uncompleteds);
+        model.addAttribute("completeds", completeds);
 
         return "myPage";
     }
