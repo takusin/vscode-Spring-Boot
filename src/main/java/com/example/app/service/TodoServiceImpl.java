@@ -54,4 +54,9 @@ public class TodoServiceImpl implements TodoService{
         todosMapper.updateTodoStatus(todo); // マッパーのupdateTodoStatusメソッドを呼び出し
     }
 
+    @Override
+    public void deleteTodoById(Integer id){
+        todosMapper.deleteTodoById(id);
+    }
+
 }

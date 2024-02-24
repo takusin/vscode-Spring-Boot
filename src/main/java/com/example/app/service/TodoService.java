@@ -25,4 +25,7 @@ public interface TodoService {
 
     // ステータス更新メソッドの追加
     void updateTodoStatus(Integer id, Integer status); 
+
+    // IDに基づいてTodoを削除
+    void deleteTodoById(Integer id);
 }

@@ -32,6 +32,6 @@ public interface TodosMapper {
     void updateTodoStatus(Todo todo);
 
     // IDに基づいてTodoを削除
-    void deleteTodoById(Todo todo);
+    void deleteTodoById(Integer id);
 
 } 
