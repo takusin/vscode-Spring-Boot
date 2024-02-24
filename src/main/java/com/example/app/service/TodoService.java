@@ -14,4 +14,7 @@ public interface TodoService {
     // TodoのIDに基づいてTodoの詳細情報を取得
     Todo findById(Integer id);
 
+    // ToDoアイテムを更新するメソッドの追加
+    void editTodo(Todo todo);
+
 }
