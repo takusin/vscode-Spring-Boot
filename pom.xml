@@ -83,6 +83,14 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- commonmark -->
+		<dependency>
+			<groupId>com.atlassian.commonmark</groupId>
+			<artifactId>commonmark</artifactId>
+			<version>0.15.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
