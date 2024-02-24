@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.app.domain.Todo;
+import com.example.app.service.MarkdownService;
 import com.example.app.service.TodoService;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 public class ToDoController {
     
     private final TodoService todoService;
+
+    private final MarkdownService markdownService;
 
     @GetMapping("/addTodo")
     public String showAddTodoForm(HttpSession session, Model model) {
@@ -43,6 +46,10 @@ public class ToDoController {
     public String todoDetail(@PathVariable("id") Integer id, Model model) {
         // IDに基づいてToDoアイテムの詳細情報を取得
         Todo todo = todoService.findById(id);
+
+        // ToDoアイテムのdescriptionをマークダウンからHTMLに変換
+        String htmlDescription = markdownService.markdownToHtml(todo.getDescription());
+        todo.setDescription(htmlDescription); // 変換後のHTMLをToDoアイテムにセット
 
         // モデルにToDoアイテムを追加
         model.addAttribute("todo", todo);
