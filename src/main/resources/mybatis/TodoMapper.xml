@@ -13,6 +13,17 @@
         SELECT id, title FROM todos WHERE user_id = #{userId}
     </select>
 
+    <!-- ユーザーIDに基づいて未完了（status=0）のTodoのタイトルを取得 -->
+    <select id="findUncompletedTitlesByUserId" resultType="com.example.app.domain.Todo">
+        SELECT id, title FROM todos WHERE user_id = #{userId} AND status = 0
+    </select>
+
+    <!-- ユーザーIDに基づいて完了（status=1）のTodoのタイトルを取得 -->
+    <select id="findCompletedTitlesByUserId" resultType="com.example.app.domain.Todo">
+        SELECT id, title FROM todos WHERE user_id = #{userId} AND status = 1
+    </select>
+
+
     <!-- IDに基づいてTodoの詳細を取得 -->
     <select id="findById" parameterType="int" resultType="com.example.app.domain.Todo">
         SELECT id, title, description, status, created_at, updated_at

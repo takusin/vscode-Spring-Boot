@@ -16,12 +16,19 @@ public interface TodosMapper {
     // ユーザーIDに基づいてTodoのタイトルを全件取得
     List<Todo> findTitlesByUserId(@Param("userId") Integer userId);
 
+    // ユーザーIDに基づいて未完了（status=0）のTodoのタイトルを取得
+    List<Todo> findUncompletedTitlesByUserId(@Param("userId") Integer userId);
+
+    // ユーザーIDに基づいて完了（status=1）のTodoのタイトルを取得
+    List<Todo> findCompletedTitlesByUserId(@Param("userId") Integer userId);
+
     // idに基づいてtodoの内容を取得
     Todo findById(@Param("id") Integer id);
 
     // idに基づいてtodoの内容を変更
     void updateTodo(Todo todo);
 
+    // IDに基づいてTodoのstatusを変更
     void updateTodoStatus(Todo todo);
 
 } 

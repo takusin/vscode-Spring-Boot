@@ -27,6 +27,16 @@ public class TodoServiceImpl implements TodoService{
     }
 
     @Override
+    public List<Todo> findUncompletedTitlesByUserId(Integer userId) {
+        return todosMapper.findUncompletedTitlesByUserId(userId);
+    }
+
+    @Override
+    public List<Todo> findCompletedTitlesByUserId(Integer userId) {
+        return todosMapper.findCompletedTitlesByUserId(userId);
+    }
+
+    @Override
     public Todo findById(Integer id) {
         return todosMapper.findById(id);
     }
