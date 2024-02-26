@@ -4,33 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoタスク詳細表示</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        div.task-container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative; /* 相対位置指定 */
+        }
+        
+        .edit-button, .status-update-button, .delete-button, form.form-button button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            min-width: 120px;
+            height: 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .edit-button {
+            background-color: #ffc107;
+            position: absolute; /* 絶対位置指定 */
+            top: 0; /* 上端に配置 */
+            left: 0; /* 左端に配置 */
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-update-button {
+            background-color: #28a745;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+        }
+
+        .edit-button:hover, .status-update-button:hover, .delete-button:hover {
+            opacity: 0.8;
+        }
+
+        a:not(.edit-button, .status-update-button, .delete-button) {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+
+        a:not(.edit-button, .status-update-button, .delete-button):hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>ToDo詳細</h1>
-    <div>
-        <h2 th:text="${todo.title}">タスクタイトル</h2>
-        <!-- th:utextを使用して、HTMLとしてマークダウンから変換されたdescriptionをレンダリング -->
-        <div th:utext="${todo.description}">タスク詳細</div>
-        <p>ステータス: <span th:text="${todo.status == 0 ? '未完了' : '完了'}">ステータス</span></p>
-        <p>作成日: <span th:text="${todo.createdAt}">作成日</span></p>
-        <p>更新日: <span th:text="${todo.updatedAt}">更新日</span></p>
+    <!-- タスクコンテナ -->
+    <div class="task-container">
+        <!-- 編集ボタン -->
+        <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="edit-button">編集</a>
+        
+        <!-- タスク詳細 -->
+        <div>
+            <h2 th:text="${todo.title}">タスクタイトル</h2>
+            <div th:utext="${todo.description}">タスク詳細</div>
+            <p>ステータス: <span th:text="${todo.status == 0 ? '未完了' : '完了'}">ステータス</span></p>
+            <p>作成日: <span th:text="${todo.createdAt}">作成日</span></p>
+            <p>更新日: <span th:text="${todo.updatedAt}">更新日</span></p>
+        </div>
     </div>
 
-    <!-- 例: ToDoの詳細ページまたは一覧ページ内に編集リンクを追加 -->
-    <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="edit-button">編集</a>
+    <!-- ボタンコンテナ -->
+    <div class="button-container">
+        <!-- ステータス更新フォーム -->
+        <form th:action="@{/todo/status/{id}(id=${todo.id})}" method="post" class="form-button">
+            <input type="hidden" name="status" th:value="${todo.status == 0 ? 1 : 0}" />
+            <button type="submit" class="status-update-button">ステータス更新</button>
+        </form>
 
-    <form th:action="@{/todo/status/{id}(id=${todo.id})}" method="post">
-        <input type="hidden" name="status" th:value="${todo.status == 0 ? 1 : 0}" />
-        <button type="submit" class="status-update-button">
-            <span th:text="${todo.status == 0 ? '完了にする' : '未完了にする'}">ステータス更新</span>
-        </button>
-    </form>
-    
-    <!-- ToDoの削除リンク -->
-    <form th:action="@{/todo/delete/{id}(id=${todo.id})}" method="post">
-        <button type="submit" class="delete-button">削除</button>
-    </form>
+        <!-- 削除フォーム -->
+        <form th:action="@{/todo/delete/{id}(id=${todo.id})}" method="post" class="form-button">
+            <button type="submit" class="delete-button">削除</button>
+        </form>
+    </div>
 
+    <!-- マイページへのリンク -->
     <a th:href="@{/myPage}">マイページに戻る</a>
 </body>
 </html>
