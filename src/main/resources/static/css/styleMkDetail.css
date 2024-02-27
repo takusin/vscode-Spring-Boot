@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1 {
+    color: #495057; /* ページタイトルの色をより強調 */
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #343a40; /* タスクタイトルの色を暗めにして強調 */
+    margin-bottom: 20px;
+    font-size: 24px; /* タイトルのサイズを大きく */
+}
+
+div.task-container-title, div.task-container {
+    background-color: #e9ecef; /* 背景色を変更して区別を明確に */
+    padding: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6; /* 枠線を追加 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button, .status-update-button, .delete-button, form.form-button button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px; /* パディングを調整して大きく */
+    min-width: 120px;
+    height: 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px; /* フォントサイズを少し大きく */
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease; /* 全体の変更を滑らかに */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2); /* 影を追加 */
+}
+
+.edit-button {
+    background-color: #ffc107;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.status-update-button {
+    background-color: #28a745;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.edit-button:hover, .status-update-button:hover, .delete-button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px); /* ホバー時に少し上に動かす */
+    box-shadow: 0 4px 5px rgba(0,0,0,0.3); /* ホバー時の影を強調 */
+}
+
+a:not(.edit-button, .status-update-button, .delete-button) {
+    color: #0056b3; /* リンクの色を変更 */
+    font-weight: bold; /* フォントを太く */
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+}
+
+a:not(.edit-button, .status-update-button, .delete-button):hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}

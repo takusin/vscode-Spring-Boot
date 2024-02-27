@@ -1,81 +1,72 @@
 @charset "UTF-8";
-        
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-        }
-        
-        h1 {
-            color: #495057;
-            text-align: left;
-        }
-        
-        h2 {
-            color: #6c757d;
-            text-align: left;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        li {
-            background-color: #ffffff;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        
-        li:hover {
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        li a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        li a:hover {
-            text-decoration: underline;
-        }
-        
-        a.create-button {
-            display: block;
-            width: max-content;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-        
-        a.create-button:hover {
-            background-color: #218838;
-        }
-        
-        div.container {
-            max-width: 800px;
-            margin: auto;
-        }
-        
-        @media (min-width: 768px) {
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-            li {
-                width: calc(50% - 10px); /* Adjust based on your spacing */
-            }
-        }
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2 {
+    color: #495057;
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* 全てのアイテムを縦に並べる */
+}
+
+li {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+li a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.create-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.create-button:hover {
+    background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+    ul {
+        flex-direction: row; /* 大きい画面では横に並べる */
+        flex-wrap: wrap;
+    }
+    li {
+        width: calc(50% - 10px); /* 2列で表示 */
+        margin-right: 10px;
+    }
+}

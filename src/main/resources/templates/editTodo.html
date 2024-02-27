@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <link th:href="@{/css/styleTodo.css}" rel="stylesheet">
 <body>
     <form th:action="@{/edit/{id}(id=${todo.id})}" th:object="${todo}" method="post">
         <input type="hidden" th:field="*{id}" />
