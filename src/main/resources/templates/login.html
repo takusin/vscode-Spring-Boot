@@ -17,7 +17,7 @@
             <label for="password">パスワード:</label>
             <input type="password" id="password" th:field="*{userPassword}" required="required">
         </div>
-        <div>
+        <div class="form-action">
             <button type="submit">ログイン</button>
         </div>
     </form>
@@ -25,9 +25,9 @@
     <!-- エラーメッセージ表示 -->
     <div th:if="${loginError}" th:text="${loginError}" style="color: red;"></div>
 
-    <div>
-        <a th:href="@{/register}"><button type="button">新規登録</button></a>
+    <!-- 新規登録ボタンをformの外に配置し、フォームの下に表示 -->
+    <div class="register-container">
+        <a th:href="@{/register}"><button type="button" class="register-button">新規登録</button></a>
     </div>
-    
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイページ</title>
+    <link th:href="@{/css/styleMk.css}" rel="stylesheet">
 </head>
 <body>
     <h1>ToDoリスト一覧</h1>
@@ -11,7 +12,7 @@
         ToDoリストが空です。
     </div>
     
-    <h2>未完了のToDo</h2>
+    <h2>未完了</h2>
     <div th:if="${!uncompleteds.isEmpty()}">
         <ul>
             <!-- 未完了ToDoリストの各項目を表示 -->
@@ -24,7 +25,7 @@
         未完了のToDoはありません。
     </div>
     
-    <h2>完了したToDo</h2>
+    <h2>完了</h2>
     <div th:if="${!completeds.isEmpty()}">
         <ul>
             <!-- 完了ToDoリストの各項目を表示 -->
@@ -37,6 +38,6 @@
         完了したToDoはありません。
     </div>
     
-    <a th:href="@{/addTodo}">作成</a>
+    <a th:href="@{/addTodo}" class="create-button">作成</a>
 </body>
 </html>

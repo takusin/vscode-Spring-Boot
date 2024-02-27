@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ToDo追加</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    
+    <link th:href="@{/css/styleTodo.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -13,10 +13,10 @@
     <input type="text" th:field="*{title}" placeholder="タイトル"/>
 
     <!-- デバッグ用: userIdの値を表示 -->
-    <p th:text="'userId: ' + ${userId}"></p>
+    <!-- <p th:text="'userId: ' + ${userId}"></p> -->
 
     <textarea th:field="*{description}" id="markdown-editor" placeholder="説明"></textarea>
-    <button type="submit">送信</button>
+    <button type="submit">作成</button>
 </form>
 
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
