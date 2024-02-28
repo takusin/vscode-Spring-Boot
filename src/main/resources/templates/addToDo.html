@@ -12,9 +12,6 @@
 
     <input type="text" th:field="*{title}" placeholder="タイトル"/>
 
-    <!-- デバッグ用: userIdの値を表示 -->
-    <!-- <p th:text="'userId: ' + ${userId}"></p> -->
-
     <textarea th:field="*{description}" id="markdown-editor" placeholder="説明"></textarea>
     <button type="submit">作成</button>
 </form>
